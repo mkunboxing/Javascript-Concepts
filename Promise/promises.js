@@ -1,4 +1,12 @@
-console.log("Polyfill of Promise.race");
+console.log("Polyfill of Promise.all");
+
+// Promise
+// Eventual Completion of asynchronous Operation and resulting value
+
+// Promise can be in three states
+// 1 fulfilled
+// 2 pending
+// 3 rejected
 
 const promise1 = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -12,26 +20,42 @@ const promise2 = new Promise((resolve, reject) => {
 
 const promise3 = 10;
 
-// Promise.race([promise1, promise2, promise3])
-//   .then((data) => console.log(data))
-//   .catch((err) => console.error(err));
+// promise
+//   .then((result) => console.log(result))
+//   .catch((error) => console.error(error));
 
-// Promise Race
+// Promise.all
 
-// Input is the array of promises.
-// Return the first one to be resolved or reject.
+// Input is array of promises or any values
+// Return array of results of input promises
+// Wait for all promises to be resolved or any to be rejected
+// You will not get result if any of promise is rejected.
+// But get in the code of all
 
-//polyfill of promise.race
+// Promise.all([promise1, promise2, promise3])
+//   .then((result) => console.log(result))
+//   .catch((error) => console.error(error));
 
-Promise.myRace = function (arrayOfPromises) {
+// polyfill of promise.all
+
+Promise.myAll = function (arrayOfPromises) {
   return new Promise((resolve, reject) => {
+    let counter = 0;
+    let results = [];
     for (let i = 0; i < arrayOfPromises.length; i++) {
-      Promise.resolve(arrayOfPromises[i]).then(resolve, reject);
+      Promise.resolve(arrayOfPromises[i])
+        .then((value) => {
+          counter++;
+          results[i] = value;
+          if (counter == arrayOfPromises.length) {
+            resolve(results);
+          }
+        })
+        .catch((err) => reject(err));
     }
-    // promise.then((value)=>{resolve(value)},(error)=>{reject(error)})
   });
 };
 
-Promise.myRace([promise1, promise3, promise2])
-  .then((data) => console.log(data))
-  .catch((err) => console.error(err));
+Promise.myAll([promise1, promise2, promise3])
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
