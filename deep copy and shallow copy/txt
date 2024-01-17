@@ -1,0 +1,2 @@
+Shallow Copy:
+A shallow copy creates a new object or array, but it only copies the references to the original nested objects or arrays. It does not create copies of the nested objects themselves.
