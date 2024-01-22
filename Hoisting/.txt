@@ -14,7 +14,7 @@ allocated to variables & functions
 languages, as it is not possible to access something that is
 not even created (defined) yet But in JS, We know that in the
 memory creation phase, it assigns undefined and puts the
-content of function to function's memory.
+content of function to function's mxbcxbemory.
 
 2. And in execution, it then executes whatever is asked. Here,
 as execution goes line by line and not after compiling, it
