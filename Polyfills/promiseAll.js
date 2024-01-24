@@ -16,13 +16,12 @@ Suppose Promise.all not available so lets create our Promise.all() function . we
 function myPromiseAll(taskList) {
     //to store results 
     const results = [];
-    
     //to track how many promises have completed
     let promisesCompleted = 0;
-  
     // return new promise
     return new Promise((resolve, reject) => {
-  
+
+      //for each promise
       taskList.forEach((promise, index) => {
        //if promise passes
         promise.then((val) => {
