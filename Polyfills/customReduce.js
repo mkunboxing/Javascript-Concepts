@@ -23,3 +23,5 @@ Array.prototype.myReduce= function(callbackFn, initialValue) {
     }
     return accumulator;
   }
+
+  dfdfg
