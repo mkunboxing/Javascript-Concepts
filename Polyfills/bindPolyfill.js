@@ -1,32 +1,31 @@
 // The basic implementation of bind goes like
 
-let basic = {
-    'name': 'shyam',
-    'age': 24
+let car1 = {
+    color: "blue",
+    company: "Tata",
   };
   
-  function callMe(city) {
-    console.log('Hi! my name is ' + this.name + ' and my age is ' + this.age + ' and my city is ' + arguments[0] + ' and state is ' + arguments[1]);
+function purchaseCar(currency, price) {
+  console.log(`I have Purchased a ${this.color} ${this.company} car for ${currency} ${price}`);
+}
+ 
+
+// const newfunc = purchaseCar.bind(car1); // this is inbuilt bind
+// console.log(newfunc("INR", 10000));
+
+// Polyfill for bind 
+
+Function.prototype.myBind = function (context = {}, ...args) {
+  if(typeof this !== "function") {
+    throw new Error(this + " is not a function");
   }
-  let callBinded = callMe.bind(basic, 'jammu');
-  callBinded('j&k'):
 
-//   Output: Hi! my name is shyam and my age is 24 and my city is jammu and state is j&k
-
-
-////////////////////////////////////////////////////////////////////////////////////
-
-
-// Polyfill for bind():
-
-Function.prototype.myBind = function(...args){
-    var callback = this,
-        ctx = args.splice(1);
-    return function(...a){        
-        callback.call(args[0], ...[...ctx, ...a]);
-    }
+  context.fn= this;
+  return function (...newArgs){
+    return context.fn(...args, ...newArgs);
+  }
+  
 }
 
-const result2 = printName.myBind(myName, "Palia",);
-result2("India");
-
+const newfunc = purchaseCar.myBind(car1);
+console.log(newfunc("INR", 10000));
