@@ -14,3 +14,13 @@ const message = function() {
 }
  
 setTimeout(message, 3000);
+
+// another example for callback function
+
+function x(y){
+    console.log("x");
+    y();
+}
+x(function y(){
+    console.log("y");
+})
