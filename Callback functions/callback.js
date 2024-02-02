@@ -9,18 +9,57 @@ A callback function can run after another function has finished */
 
 // To understand what I’ve explained above, let me start with a simple example. We want to log a message to the console but it should be there after 3 seconds.
 
-const message = function() {  
-    console.log("This message is shown after 3 seconds");
-}
+// const message = function() {  
+//     console.log("This message is shown after 3 seconds");
+// }
  
-setTimeout(message, 3000);
+// setTimeout(message, 3000);
 
-// another example for callback function
+// // another example for callback function
 
-function x(y){
-    console.log("x");
-    y();
+// function x(y){
+//     console.log("x");
+//     y();
+// }
+// x(function y(){
+//     console.log("y");
+// })
+
+
+// one simple example
+
+function printFirstName(firstName, cb) {
+    console.log(firstName);
+    cb("kumar")
 }
-x(function y(){
-    console.log("y");
-})
+
+function printLastName(lastName) {
+    console.log(lastName);
+}
+
+printFirstName("sachin", printLastName);
+
+
+// one more example
+
+function firstName(firstNameValue, callback) {
+    callback(firstNameValue);
+  }
+  
+  function lastName(lastNameValue, callback) {
+    callback(lastNameValue);
+  }
+  
+  function fullname(firstName, lastName, callback) {
+    callback(firstName + " " + lastName);
+  }
+  
+  // Example usage with callback functions
+  firstName("sachin", function (first) {
+    lastName("kumar", function (last) {
+      fullname(first, last, function (fullName) {
+        console.log(fullName);
+      });
+    });
+  });
+  
