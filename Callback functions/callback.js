@@ -28,38 +28,51 @@ A callback function can run after another function has finished */
 
 // one simple example
 
-function printFirstName(firstName, cb) {
-    console.log(firstName);
-    cb("kumar")
-}
+// function printFirstName(firstName, cb) {
+//     console.log(firstName);
+//     cb("kumar")
+// }
 
-function printLastName(lastName) {
-    console.log(lastName);
-}
+// function printLastName(lastName) {
+//     console.log(lastName);
+// }
 
-printFirstName("sachin", printLastName);
+// printFirstName("sachin", printLastName);
 
 
-// one more example
+// // one more example
 
-function firstName(firstNameValue, callback) {
-    callback(firstNameValue);
-  }
+// function firstName(firstNameValue, callback) {
+//     callback(firstNameValue);
+//   }
   
-  function lastName(lastNameValue, callback) {
-    callback(lastNameValue);
-  }
+//   function lastName(lastNameValue, callback) {
+//     callback(lastNameValue);
+//   }
   
-  function fullname(firstName, lastName, callback) {
-    callback(firstName + " " + lastName);
-  }
+//   function fullname(firstName, lastName, callback) {
+//     callback(firstName + " " + lastName);
+//   }
   
-  // Example usage with callback functions
-  firstName("sachin", function (first) {
-    lastName("kumar", function (last) {
-      fullname(first, last, function (fullName) {
-        console.log(fullName);
-      });
-    });
-  });
+//   // Example usage with callback functions
+//   firstName("sachin", function (first) {
+//     lastName("kumar", function (last) {
+//       fullname(first, last, function (fullName) {
+//         console.log(fullName);
+//       });
+//     });
+//   });
   
+  // real life  example for callback function
+ 
+//   const checkEven = (num) =>{
+//     return num % 2 == 0;
+//   }
+
+//   let printResult = (evenfn , num) =>{
+//     const isEven = evenfn(num);
+
+//     console.log(`this ${num} is ${isEven}`);
+//   }
+
+//   printResult(checkEven, 1)
